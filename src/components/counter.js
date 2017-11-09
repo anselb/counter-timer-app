@@ -10,6 +10,8 @@ class Counter extends Component {
 
         <h1>{this.props.count}</h1>
 
+        <div><progress value={(this.props.count + 60) % 60} max="60"></progress></div>
+
         <button onClick={() => {
             this.props.onUp()
             // this.props.incrementCounter()
@@ -30,6 +32,10 @@ class Counter extends Component {
         <button onClick={() => {
             this.props.onUpFive()
         }}>+5</button>
+
+        <button onClick={() => {
+            this.props.onDelete()
+        }}>Delete</button>
 
       </div>
     );

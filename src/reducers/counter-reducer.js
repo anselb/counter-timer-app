@@ -1,4 +1,10 @@
-import { INCREMENT, DECREMENT, NEW_COUNTER, INCREMENT_ALL, RESET_COUNT, INCREMENT_FIVE } from '../actions'
+import { INCREMENT,
+         DECREMENT,
+         NEW_COUNTER,
+         INCREMENT_ALL,
+         RESET_COUNT,
+         INCREMENT_FIVE,
+         DELETE_COUNTER } from '../actions'
 
 const counterReducer = (state = [99], action) => {
     console.log(action);
@@ -49,7 +55,11 @@ const counterReducer = (state = [99], action) => {
             return state.map((count, index) => {
                 return action.payload === index ? count += 5 : count
             })
-
+            break
+        case DELETE_COUNTER:
+            state.splice(action.payload, 1)
+            return [...state]
+            break
         case NEW_COUNTER:
             return [...state, 0] // {name:"", count: 0}
         // case RESET_COUNT:
