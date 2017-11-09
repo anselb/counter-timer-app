@@ -5,6 +5,7 @@ export const NEW_COUNTER = "NEW_COUNTER"
 export const INCREMENT_ALL = "INCREMENT_ALL"
 export const INCREMENT_FIVE = "INCREMENT_FIVE"
 export const DELETE_COUNTER = "DELETE_COUNTER"
+export const IS_RUNNING = "IS_RUNNING"
 
 
 // counters: [1, 33, 2, 5]
@@ -12,8 +13,7 @@ export const DELETE_COUNTER = "DELETE_COUNTER"
 
 export const newCounter = () => {
     return {
-        type: NEW_COUNTER,
-        payload: ""
+        type: NEW_COUNTER
     }
 }
 
@@ -54,6 +54,13 @@ export const deleteCounter = (index) => {
 export const resetCounter = (index) => {
     return {
         type: RESET_COUNT,
+        payload: index
+    }
+}
+
+export const isRunning = (index) => {
+    return {
+        type: IS_RUNNING,
         payload: index
     }
 }

@@ -17,6 +17,7 @@ setInterval(() => {
     store.dispatch(incrementAll())
 }, 1000)
 
+
 class App extends Component {
   render() {
     return (

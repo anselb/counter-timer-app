@@ -10,12 +10,16 @@ class CounterTotal extends Component {
     }
 
     getTotal() {
-        return this.props.counters.reduce((acc, count) => {
-            return acc + count
-        })
+        if (this.props.counters.length === 0) {
+            return 0
+        }
+        return this.props.counters.reduce((acc, counter) => {
+            return acc + counter.count
+        }, 0)
     }
 
     render() {
+        console.log(this.getTotal())
         return <h1>{this.getTotal()}</h1>
     }
 }

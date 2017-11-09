@@ -11,10 +11,10 @@ class ListCounters extends Component {
     }
 
     drawCounters() {
-        return this.props.counters.map((count, index) => {
+        return this.props.counters.map((counter, index) => {
             return <Counter
                     key={index}
-                    count={count}
+                    count={counter.count}
                     index={index}
                     onUp={() => {
                         console.log("Counter on up!!!!! "+index);

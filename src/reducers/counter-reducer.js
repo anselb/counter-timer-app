@@ -6,20 +6,22 @@ import { INCREMENT,
          INCREMENT_FIVE,
          DELETE_COUNTER } from '../actions'
 
-const counterReducer = (state = [99], action) => {
+const counterReducer = (state = [], action) => {
     console.log(action);
+
     switch (action.type) {
         case INCREMENT:
-            let newState = state.map((item, index) => {
-                console.log(action.payload, index, item, action.payload === index);
+            let newState = state.map((counter, index) => {
+                console.log(action.payload, index, counter, action.payload === index);
+
                 if (action.payload === index) {
                     // console.log("*****", item);
                     // item++
                     // console.log("*****", item);
                     // item.count += 1
-                    return ++item
+                    return { name: counter.name, count: ++counter.count }
                 } else {
-                    return item
+                    return { name: counter.name, count: counter.count }
                 }
                 // return action.payload === index ? count++ : count
             })
@@ -27,44 +29,43 @@ const counterReducer = (state = [99], action) => {
             return newState;
             break
         case DECREMENT:
-            return state.map((count, index) => {
-                /*
+            return state.map((counter, index) => {
                 if (action.payload === index) {
-                    count.count -= 1
+                    counter.count -= 1
                 }
-
-                return count
-                */
-                return action.payload === index ? --count : count
+                return { name: counter.name, count: counter.count }
+                // return action.payload === index ? --count : count
             })
             break
         case INCREMENT_ALL:
-            return state.map((count) => {
-                return ++ count
+            return state.map((counter) => {
+                return { name: counter.name, count: ++ counter.count }
             })
             break
         case RESET_COUNT:
-            return state.map((count, index) => {
+            return state.map((counter, index) => {
                 if (action.payload === index) {
-                    return 0
+                    return { name: counter.name, count: 0}
                 }
-                return count
+                return { name: counter.name, count: counter.count }
             })
             break
         case INCREMENT_FIVE:
-            return state.map((count, index) => {
-                return action.payload === index ? count += 5 : count
+            return state.map((counter, index) => {
+                return action.payload === index ? { name: counter.name, count: counter.count +=5 } : { name: counter.name, count: counter.count }
             })
             break
         case DELETE_COUNTER:
             state.splice(action.payload, 1)
             return [...state]
             break
+        // case IS_RUNNING:
+        //
+        //     break
         case NEW_COUNTER:
-            return [...state, 0] // {name:"", count: 0}
-        // case RESET_COUNT:
-        //     return 0
-        // break
+            let newName = "Timer " + String(state.length + 1)
+            return [...state, { name: newName, count: 0 }] // {name:"", count: 0}
+            break
         default:
             return state
     }
