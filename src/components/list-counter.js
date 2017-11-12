@@ -15,6 +15,7 @@ class ListCounters extends Component {
             return <Counter
                     key={index}
                     count={counter.count}
+                    name={counter.name}
                     index={index}
                     onUp={() => {
                         console.log("Counter on up!!!!! "+index);

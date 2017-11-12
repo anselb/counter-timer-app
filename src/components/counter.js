@@ -10,7 +10,7 @@ class Counter extends Component {
 
         <h1>{this.props.count}</h1>
 
-
+        <p>{this.props.name}</p>
 
         <button onClick={() => {
             this.props.onUp()
