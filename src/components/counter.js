@@ -37,6 +37,10 @@ class Counter extends Component {
             this.props.onDelete()
         }}>Delete</button>
 
+        <button onClick={() => {
+            this.props.startStop()
+        }}>Start/Stop</button>
+
       </div>
     );
   }

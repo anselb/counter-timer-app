@@ -1,6 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { incrementCounter, decrementCounter, newCounter, resetCounter, incrementFive, deleteCounter } from '../actions';
+import { incrementCounter,
+         decrementCounter,
+         newCounter,
+         resetCounter,
+         incrementFive,
+         deleteCounter,
+         isRunning } from '../actions';
 
 import Counter from './counter'
 
@@ -33,6 +39,9 @@ class ListCounters extends Component {
                     }}
                     onDelete={() => {
                         this.props.deleteCounter(index)
+                    }}
+                    startStop={() => {
+                        this.props.isRunning(index)
                     }}/>
         })
     }
@@ -62,6 +71,7 @@ export default connect(
         resetCounter,
         incrementFive,
         newCounter,
-        deleteCounter
+        deleteCounter,
+        isRunning
 
     })(ListCounters);
